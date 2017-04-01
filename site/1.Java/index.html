@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Java代码规范 - 代码规范</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">代码规范</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">Java代码规范</a>
+                    </li>
+                    <li >
+                        <a href="../2.JavaScript/">JavaScript代码规范</a>
+                    </li>
+                    <li >
+                        <a href="../3.CSS/">CSS代码规范</a>
+                    </li>
+                    <li >
+                        <a href="../4.HTML/">HTML代码规范</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../2.JavaScript/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#java">Java代码规范</a></li>
+            <li><a href="#1">1. 命名</a></li>
+            <li><a href="#2-declarations">2. 声明 (Declarations)</a></li>
+            <li><a href="#3-spacing">3. 间隔 (Spacing)</a></li>
+            <li><a href="#4-getters-setters">4. Getters &amp; Setters</a></li>
+            <li><a href="#5-brace-style">5. 括号样式 (Brace Style)</a></li>
+            <li><a href="#6-switch-switch-statements">6. Switch语句 (Switch Statements)</a></li>
+            <li><a href="#7-annotations">7. 注解 (Annotations)</a></li>
+            <li><a href="#8-xml-xml-guidance">8. XML指引 (XML Guidance)</a></li>
+            <li><a href="#9-language">9. 语言 (Language)</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="java">Java代码规范</h1>
+<p>v0.2</p>
+<hr />
+<h2 id="1">1. 命名</h2>
+<h3 id="1-packages">1) 包 (Packages)</h3>
+<p>包名应该全部使用小写字母，多个单词组合在一起时，不要使用连接符或下划线</p>
+<p><strong>bad</strong>:</p>
+<pre><code class="java">com.RayWenderlich.funky_widget
+</code></pre>
+
+<p><strong>good</strong>:</p>
+<pre><code class="java">com.raywenderlich.funkywidget
+</code></pre>
+
+<h3 id="2-classes-interfaces">2) 类 &amp; 接口 (Classes &amp; Interfaces)</h3>
+<p>类名和接口名采用首字母大写的驼峰命名法，例如：<code>RadialSlider</code>. </p>
+<h3 id="3-methods">3) 方法 (Methods)</h3>
+<p>方法名采用首字母小写的驼峰命名法，例如：<code>setValue</code>.</p>
+<h3 id="4-fields">4) 属性 (Fields)</h3>
+<p>属性名采用首字母小写的驼峰命名法。</p>
+<p>静态属性采用大写字母命名，多个单词之间使用下划线连接</p>
+<pre><code class="java">public static final int THE_ANSWER = 42;
+</code></pre>
+
+<h3 id="5-variables-parameters">5) 变量 &amp; 参数 (Variables &amp; Parameters)</h3>
+<p>变量名和参数名采用首字母小写的驼峰命名法。</p>
+<p>除临时循环变量，避免使用单个字符命名</p>
+<h3 id="6-misc">6) 缩略词 (Misc)</h3>
+<p>在代码中，缩略语应该视为一个单词</p>
+<p><strong>bad</strong>:</p>
+<pre><code class="java">XMLHTTPRequest
+String URL
+findPostByID
+</code></pre>
+
+<p><strong>good</strong>:</p>
+<pre><code class="java">XmlHttpRequest
+String url
+findPostById
+</code></pre>
+
+<h2 id="2-declarations">2. 声明 (Declarations)</h2>
+<h3 id="1-access-level-modifiers">1) 访问级别修饰 (Access Level Modifiers)</h3>
+<p>类，方法和属性的声明必须要有准确的访问级别修饰符</p>
+<h3 id="2-fields-variables">2) 属性 &amp; 变量 (Fields &amp; Variables)</h3>
+<p>一个声明语句占用一行</p>
+<p><strong>bad</strong>:</p>
+<pre><code class="java">String username, twitterHandle;
+</code></pre>
+
+<p><strong>good</strong>:</p>
+<pre><code class="java">String username;
+String twitterHandle;
+</code></pre>
+
+<h3 id="3-classes">3) 类 (Classes)</h3>
+<p>除了内部类，一个文件应该只定义一个类</p>
+<h3 id="4-enum-classes">4) 枚举 (Enum Classes)</h3>
+<p>没有方法的枚举类，可以不使用换行</p>
+<pre><code class="java">private enum CompassDirection {
+    EAST, NORTH, WEST, SOUTH
+}
+</code></pre>
+
+<h2 id="3-spacing">3. 间隔 (Spacing)</h2>
+<p>适当使用间隔，使代码具有很好的可读性</p>
+<h3 id="1-indentation">1) 缩进 (Indentation)</h3>
+<p>使用tab作为缩进，而不是空格</p>
+<h3 id="2-blocks">2) 块 (Blocks)</h3>
+<p>代码块的缩进使用1个tab</p>
+<pre><code class="java">for (int i = 0; i &lt; 10; i++) {
+    Log.i(TAG, &quot;index=&quot; + i);
+}
+</code></pre>
+
+<h3 id="3-line-wraps">3) 换行 (Line Wraps)</h3>
+<p>换行的缩进使用2个tab</p>
+<pre><code class="java">CoolUiWidget widget =
+        someIncrediblyLongExpression(that, reallyWouldNotFit, on, aSingle, line);
+</code></pre>
+
+<h3 id="4-line-length">4) 行宽 (Line Length)</h3>
+<p>行宽应该控制在100个字符以内</p>
+<h3 id="5-vertical-spacing">5) 间距 (Vertical Spacing)</h3>
+<p>方法之间应该使用一个空行隔开，不同的代码块也应该用空行隔开</p>
+<h2 id="4-getters-setters">4. Getters &amp; Setters</h2>
+<p>推荐使用getters和setters方法从外部访问内部属性，避免声明<code>public</code>的属性。内部访问时，直接使用属性名</p>
+<h2 id="5-brace-style">5. 括号样式 (Brace Style)</h2>
+<p>代码块的开始括号应该与其前面的代码在同一行</p>
+<p><strong>bad</strong>:</p>
+<pre><code class="java">class MyClass
+{
+    void doSomething()
+    {
+        if (someTest)
+        {
+            // ...
+        }
+        else
+        {
+            // ...
+        }
+    }
+}
+</code></pre>
+
+<p><strong>good</strong>:</p>
+<pre><code class="java">class MyClass {
+    void doSomething() {
+        if (someTest) {
+            // ...
+        } else {
+            // ...
+        }
+    }
+}
+</code></pre>
+
+<p>条件代码块，无论有多少行，都必须用括号括起来</p>
+<p><strong>bad</strong>:</p>
+<pre><code class="java">if (someTest)
+    doSomething();
+if (someTest) doSomethingElse();
+</code></pre>
+
+<p><strong>good</strong>:</p>
+<pre><code class="java">if (someTest) {
+    doSomething();
+}
+if (someTest) { doSomethingElse(); }
+</code></pre>
+
+<h2 id="6-switch-switch-statements">6. Switch语句 (Switch Statements)</h2>
+<p>Switch 必须包含 <code>default</code> 分支</p>
+<p><strong>bad</strong>:</p>
+<pre><code class="java">switch (anInput) {
+    case 1:
+        doSomethingForCaseOne();
+    case 2:
+        doSomethingForCaseOneOrTwo();
+        break;
+    case 3:
+        doSomethingForCaseOneOrThree();
+        break;
+}
+</code></pre>
+
+<p><strong>good</strong>:</p>
+<pre><code class="java">switch (anInput) {
+    case 1:
+        doSomethingForCaseOne();
+        // fall through
+    case 2:
+        doSomethingForCaseOneOrTwo();
+        break;
+    case 3:
+        doSomethingForCaseOneOrThree();
+        break;
+    default:
+        break;
+}
+</code></pre>
+
+<h2 id="7-annotations">7. 注解 (Annotations)</h2>
+<p>使用标准的注解，特别是<code>@Override</code>，应该出现在方法声明之前</p>
+<p><strong>bad</strong>:</p>
+<pre><code class="java">protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+}
+</code></pre>
+
+<p><strong>good</strong>:</p>
+<pre><code class="java">@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+}
+</code></pre>
+
+<h2 id="8-xml-xml-guidance">8. XML指引 (XML Guidance)</h2>
+<p>由于Android广泛的使用XML，所以定义了一些特定的XML规则</p>
+<h3 id="1-xml-xml-file-names">1) XML文件名 (XML File Names)</h3>
+<p>基于xml的视图文件，文件名应该以表示它们的类型为前缀</p>
+<p><strong>bad</strong>:</p>
+<ul>
+<li><code>login.xml</code></li>
+<li><code>main_screen.xml</code></li>
+<li><code>rounded_edges_button.xml</code></li>
+</ul>
+<p><strong>good</strong>:</p>
+<ul>
+<li><code>activity_login.xml</code></li>
+<li><code>fragment_main_screen.xml</code></li>
+<li><code>button_rounded_edges.xml</code></li>
+</ul>
+<h3 id="2-indentation">2) 缩进 (Indentation)</h3>
+<p>和Java一样，缩进应该采用一个tab</p>
+<h3 id="3-xml-use-context-specific-xml-files">3) 使用特定的XML文件 (Use Context-Specific XML Files)</h3>
+<p>尽可能使用特定的xml文件:</p>
+<ul>
+<li>Strings =&gt; <code>res/values/strings.xml</code></li>
+<li>Styles =&gt; <code>res/values/styles.xml</code></li>
+<li>Colors =&gt; <code>res/color/colors.xml</code></li>
+<li>Animations =&gt; <code>res/anim/</code></li>
+<li>Drawable =&gt; <code>res/drawable</code></li>
+</ul>
+<h3 id="4-xml-xml-attribute-ordering">4) XML属性顺序 (XML Attribute Ordering)</h3>
+<p>xml属性应尽可能按以下顺序排列:</p>
+<ul>
+<li><code>id</code> attribute</li>
+<li><code>layout_*</code> attributes</li>
+<li>style attributes such as <code>gravity</code> or <code>textColor</code></li>
+<li>value attributes such as <code>text</code> or <code>src</code></li>
+</ul>
+<p>在每个分组内，属性应该按字母顺序排列</p>
+<h2 id="9-language">9. 语言 (Language)</h2>
+<p>使用美式英语拼写规则</p>
+<p><strong>bad</strong>:</p>
+<pre><code class="java">String colour = &quot;red&quot;;
+</code></pre>
+
+<p><strong>good</strong>:</p>
+<pre><code class="java">String color = &quot;red&quot;;
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

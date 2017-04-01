@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>CSS代码规范 - 代码规范</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">代码规范</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../1.Java/">Java代码规范</a>
+                    </li>
+                    <li >
+                        <a href="../2.JavaScript/">JavaScript代码规范</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">CSS代码规范</a>
+                    </li>
+                    <li >
+                        <a href="../4.HTML/">HTML代码规范</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../2.JavaScript/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../4.HTML/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#css">CSS代码规范</a></li>
+            <li><a href="#1">1. 代码组织</a></li>
+            <li><a href="#2-class-id">2. Class 和 ID</a></li>
+            <li><a href="#3">3. 声明块格式</a></li>
+            <li><a href="#4">4. 声明顺序</a></li>
+            <li><a href="#5">5. 引号使用</a></li>
+            <li><a href="#6-media-query">6. 媒体查询（Media query）的位置</a></li>
+            <li><a href="#7-import">7. 不要使用 @import</a></li>
+            <li><a href="#8">8. 链接的样式顺序</a></li>
+            <li><a href="#9">9. 无需添加浏览器厂商前缀</a></li>
+            <li><a href="#10-less">10. LESS</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="css">CSS代码规范</h1>
+<p>v0.2</p>
+<hr />
+<h2 id="1">1. 代码组织</h2>
+<ul>
+<li>以组件为单位组织代码段；</li>
+<li>制定一致的注释规范；</li>
+<li><code>组件块和子组件块</code>以及<code>声明块</code>之间使用<strong>一空行</strong>分隔，<code>子组件块</code>之间<strong>三空行</strong>分隔；</li>
+<li>如果使用了多个 CSS 文件，将其按照组件而非页面的形式分拆，因为页面会被重组，而组件只会被移动；</li>
+</ul>
+<pre><code class="css">/* 组件块 */
+.selector {
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+/* 子组件块 */
+.selector-secondary {
+  display: block; /* 注释*/
+}
+
+.selector-three {
+  display: span;
+}
+</code></pre>
+
+<h2 id="2-class-id">2. Class 和 ID</h2>
+<ul>
+<li>使用语义化、通用的命名方式；</li>
+<li>使用连字符 - 作为 ID、Class 名称界定符，不要驼峰命名法和下划线；</li>
+<li>避免选择器嵌套层级过多，尽量少于 3 级；</li>
+<li>避免选择器和 Class、ID 叠加使用；</li>
+</ul>
+<p>出于<a href="http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/">性能考量</a>，在没有必要的情况下避免元素选择器叠加 Class、ID  使用。</p>
+<p>元素选择器和 ID、Class 混合使用也违反关注分离原则。如果HTML标签修改了，就要再去修改 CSS 代码，不利于后期维护。</p>
+<pre><code class="css">/* Not recommended */
+.red {}
+.box_green {}
+.page .header .login #username input {}
+ul#example {}
+
+/* Recommended */
+#nav {}
+.box-video {}
+#username input {}
+#example {}
+</code></pre>
+
+<h2 id="3">3. 声明块格式</h2>
+<ul>
+<li>选择器分组时，保持独立的选择器占用一行；</li>
+<li>声明块的左括号 <code>{</code> 前添加一个空格；</li>
+<li>声明块的右括号 <code>}</code> 应单独成行；</li>
+<li>声明语句中的 <code>:</code> 后应添加一个空格；</li>
+<li>声明语句应以分号 <code>;</code> 结尾；</li>
+<li>一般以逗号分隔的属性值，每个逗号后应添加一个空格；</li>
+<li><code>rgb()</code>、<code>rgba()</code>、<code>hsl()</code>、<code>hsla()</code> 或 <code>rect()</code>  括号内的值，逗号分隔，但逗号后不添加一个空格；</li>
+<li>对于属性值或颜色参数，不要省略小于 1 的小数前面的 0 （例如，不用<code>.5</code> 代替 <code>0.5</code>；不用<code>-.5px</code> 代替 <code>-0.5px</code>）；</li>
+<li>十六进制值应该全部小写和尽量简写，例如，<code>#fff</code> 代替 <code>#ffffff</code>；</li>
+<li>避免为 0 值指定单位，例如，用 <code>margin: 0;</code> 代替 <code>margin: 0px;</code>；</li>
+</ul>
+<pre><code class="css">/*  Not recommended  */
+.selector, .selector-secondary, .selector[type=text] {
+  padding:15px;
+  margin:0px 0px 15px;
+  background-color:rgba(0, 0, 0, .5);
+  box-shadow:0px 1px 2px #CCC,inset 0 1px 0 #FFFFFF
+}
+
+/* Recommended */
+.selector,
+.selector-secondary,
+.selector[type=&quot;text&quot;] {
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: rgba(0,0,0,0.5);
+  box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
+}
+</code></pre>
+
+<h2 id="4">4. 声明顺序</h2>
+<p>相关属性应为一组，推荐的样式编写顺序</p>
+<ol>
+<li>Positioning</li>
+<li>Box model</li>
+<li>Typographic</li>
+<li>Visual</li>
+</ol>
+<p>由于定位（positioning）可以从正常的文档流中移除元素，并且还能覆盖盒模型（box model）相关的样式，因此排在首位。盒模型决定了组件的尺寸和位置，因此排在第二位。</p>
+<p>其他属性只是影响组件的内部（inside）或者是不影响前两组属性，因此排在后面。</p>
+<pre><code class="css">.declaration-order {
+  /* Positioning */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  /* Box model */
+  display: block;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  margin: 10px;
+  float: right;
+  overflow: hidden;
+
+  /* Typographic */
+  font: normal 13px &quot;Helvetica Neue&quot;, sans-serif;
+  line-height: 1.5;
+  text-align: center;
+
+  /* Visual */
+  background-color: #f5f5f5;
+  color: #fff;
+  opacity: 0.8;
+
+  /* Other */
+  cursor: pointer;
+}
+</code></pre>
+
+<h2 id="5">5. 引号使用</h2>
+<p><code>url()</code> 、属性选择符、属性值使用双引号。
+参考 <a href="http://stackoverflow.com/questions/2168855/is-quoting-the-value-of-url-really-necessary">Is quoting the value of url() really necessary?</a></p>
+<pre><code class="css">/* Not recommended */
+@import url(//www.google.com/css/maia.css);
+
+html {
+  font-family: 'open sans', arial, sans-serif;
+}
+
+/* Recommended */
+@import url(&quot;//www.google.com/css/maia.css&quot;);
+
+html {
+  font-family: &quot;open sans&quot;, arial, sans-serif;
+}
+
+.selector[type=&quot;text&quot;] {
+
+}
+</code></pre>
+
+<h2 id="6-media-query">6. 媒体查询（Media query）的位置</h2>
+<p>将媒体查询放在尽可能相关规则的附近。不要将他们打包放在一个单一样式文件中或者放在文档底部。如果你把他们分开了，将来只会被大家遗忘。</p>
+<pre><code class="css">.element { ... }
+.element-avatar { ... }
+.element-selected { ... }
+
+@media (max-width: 768px) {
+  .element { ...}
+  .element-avatar { ... }
+  .element-selected { ... }
+}
+</code></pre>
+
+<h2 id="7-import">7. 不要使用 <code>@import</code></h2>
+<p>与 <code>&lt;link&gt;</code> 相比，<code>@import</code> 要慢很多，不光增加额外的请求数，还会导致不可预料的问题。</p>
+<p>替代办法：</p>
+<ul>
+<li>使用多个 <link> 元素；</li>
+<li>通过 Sass 或 Less 类似的 CSS 预处理器将多个 CSS 文件编译为一个文件；</li>
+<li>其他 CSS 文件合并工具；</li>
+</ul>
+<p>参考 <a href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/">don’t use @import</a>；</p>
+<h2 id="8">8. 链接的样式顺序</h2>
+<p><code>a:link -&gt; a:visited -&gt; a:hover -&gt; a:active</code></p>
+<h2 id="9">9. 无需添加浏览器厂商前缀</h2>
+<p>使用 <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> 自动添加浏览器厂商前缀，编写 CSS 时不需要添加浏览器前缀，直接使用标准的 CSS 编写。</p>
+<p>Autoprefixer 通过 <a href="http://caniuse.com/">Can I use</a>，按兼容的要求，对相应的 CSS 代码添加浏览器厂商前缀。</p>
+<h2 id="10-less">10. LESS</h2>
+<h3 id="1_1">1) 代码组织</h3>
+<p>代码按以下顺序组织：</p>
+<ol>
+<li>@import</li>
+<li>变量声明</li>
+<li>样式声明</li>
+</ol>
+<pre><code class="css">@import &quot;mixins/size.less&quot;;
+
+@default-text-color: #333;
+
+.page {
+  width: 960px;
+  margin: 0 auto;
+}
+</code></pre>
+
+<h3 id="2-import">2) @import 语句</h3>
+<p>@import 语句引用的文需要写在一对引号内，.less 后缀不得省略。引号使用 <code>'</code> 和 <code>"</code> 均可，但在同一项目内需统一。</p>
+<pre><code class="css">/* Not recommended */
+@import &quot;mixins/size&quot;;
+@import 'mixins/grid.less';
+
+/* Recommended */
+@import &quot;mixins/size.less&quot;;
+@import &quot;mixins/grid.less&quot;;
+</code></pre>
+
+<h3 id="3-mixin">3) 混合（Mixin）</h3>
+<ol>
+<li>
+<p>在定义 <code>mixin</code> 时，如果 <code>mixin</code> 名称不是一个需要使用的 className，必须加上括号，否则即使不被调用也会输出到 CSS 中。</p>
+</li>
+<li>
+<p>如果混合的是本身不输出内容的 mixin，需要在 mixin 后添加括号（即使不传参数），以区分这是否是一个 className。</p>
+</li>
+</ol>
+<pre><code class="css">/* Not recommended */
+.big-text {
+  font-size: 2em;
+}
+
+h3 {
+  .big-text;
+  .clearfix;
+}
+
+/* Recommended */
+.big-text() {
+  font-size: 2em;
+}
+
+h3 {
+  .big-text(); /* 1 */
+  .clearfix(); /* 2 */
+}
+</code></pre>
+
+<h3 id="4_1">4) 避免嵌套层级过多</h3>
+<ul>
+<li>将嵌套深度限制在2级。对于超过3级的嵌套，给予重新评估。这可以避免出现过于详实的CSS选择器。</li>
+<li>避免大量的嵌套规则。当可读性受到影响时，将之打断。推荐避免出现多于20行的嵌套规则出现。</li>
+</ul>
+<h3 id="5_1">5) 字符串插值</h3>
+<p>变量可以用类似ruby和php的方式嵌入到字符串中，像@{name}这样的结构:
+<code>@base-url: "http://assets.fnord.com";</code>
+<code>background-image: url("@{base-url}/images/bg.png");</code></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

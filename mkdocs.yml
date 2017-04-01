@@ -1,0 +1,7 @@
+site_name: 代码规范
+pages:
+- [index.md,  Home]
+- [1.Java.md,  Java代码规范]
+- [2.JavaScript.md,  JavaScript代码规范]
+- [3.CSS.md,  CSS代码规范]
+- [4.HTML.md,  HTML代码规范]
